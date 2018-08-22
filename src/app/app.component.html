@@ -10,7 +10,7 @@
 
     <mat-card fxFlex="300px">
       <div fxLayoutAlign="center">
-        <app-city-search (searchEvent)="doSearch($event)"></app-city-search>
+        <app-city-search></app-city-search>
       </div>
       <mat-card-header class="mat-typography">
         <mat-card-title>
@@ -20,7 +20,7 @@
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-current-weather [currentWeather]="searchResult"></app-current-weather>
+        <app-current-weather></app-current-weather>
       </mat-card-content>
     </mat-card>
     <div fxFlex></div>
