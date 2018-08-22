@@ -27,10 +27,20 @@ export class WeatherService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCurrentWeather(city: string, country: string): Observable<ICurrentWeather> {
+  getCurrentWeather(search: string | number, country: string): Observable<ICurrentWeather> {
+    let uriParams = '';
+    if (typeof search === 'string') {
+      uriParams = `q=${search}`;
+    } else {
+      uriParams = `zip=${search}`;
+    }
+
+    if (country) {
+      uriParams = `${uriParams}, ${country}`;
+    }
     return this.httpClient.get<ICurrentWeatherData>(
       `${environment.weatherUrl}?` +
-      `q=${city},${country}&appid=${environment.appId}`
+      `${uriParams}&appid=${environment.appId}`
     ).pipe(
       map((data) => (this.transformData(data)))
     );
