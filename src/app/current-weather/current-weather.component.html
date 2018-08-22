@@ -1,0 +1,19 @@
+<div *ngIf="currentWeather">
+  <div>
+    <div>
+      <span>{{ currentWeather.city }}, {{ currentWeather.country }}</span>
+    </div>
+    <div>
+      <span>{{ currentWeather.date | date: 'fullDate'}} </span>
+    </div>
+    <div>
+        <img [src]="currentWeather.image">
+      </div>
+      <div>
+        <span>{{ currentWeather.temporature | number: '1.0-0' }} F </span>
+      </div>
+  </div>
+  <div>
+      <span>{{ currentWeather.description }}</span>
+    </div>
+</div>
